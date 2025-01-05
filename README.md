@@ -1,7 +1,7 @@
 # robotic_arm
 <br>
 6 axis robotic arm.
-<br>
+<br><br>
 Components:-<br>
 1. 3D printed parts for base, shoulder, elbor, wrist, gripper joints.
 <br>
