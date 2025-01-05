@@ -54,7 +54,7 @@ void setup() {
   //beginning communication with serial monitor through serial port for debugging.
   Serial.begin(9600);
 
-  
+  //declaring analog pins for joysticks.
   pinMode(analog_pin_base, INPUT);
   pinMode(analog_pin_shoulder, INPUT);
   pinMode(analog_pin_elbow, INPUT);
@@ -62,6 +62,7 @@ void setup() {
   pinMode(analog_pin_gripper_ud, INPUT);
   pinMode(analog_pin_gripper, INPUT);
 
+  //intialising servo objects.
   base_servo.attach(digital_pin_base);
   shoulder_servo.attach(digital_pin_shoulder);
   elbow_servo.attach(digital_pin_elbow);
@@ -69,7 +70,7 @@ void setup() {
   gripper_ud_servo.attach(digital_pin_gripper_ud);
   gripper_servo.attach(digital_pin_gripper);
 
-  // Initialization
+  // initialization
   base_servo.write(posn_base);
   shoulder_servo.write(posn_shoulder);
   elbow_servo.write(posn_elbow);
@@ -79,14 +80,17 @@ void setup() {
 }
 
 void arm(int &posn, int analog_pin_link, Servo &link_servo, unsigned long &last_update) {
-  unsigned long current_time = millis();
-  if (current_time - last_update >= update_interval) {
+  unsigned long current_time = millis();  // recording current time.
+  
+  //reading joystick value only after a threshold time interval.
+  if (current_time - last_update >= update_interval) {    
     int js_read = analogRead(analog_pin_link);
-    speed = map(js_read, 0, 1023, -3, 3);
+    speed = map(js_read, 0, 1023, -3, 3);   //adjusting speed according joystick movement.
 
-    if (js_read <= 450 || js_read >= 550) {
+    //setting a dead zone for joystick.
+    if (js_read <= 450 || js_read >= 550) {  
       posn += speed;
-      posn = constrain(posn, MIN, MAX);
+      posn = constrain(posn, MIN, MAX);   //restricting extreme values of position.
       link_servo.write(posn);
     }
     last_update = current_time;
@@ -94,6 +98,7 @@ void arm(int &posn, int analog_pin_link, Servo &link_servo, unsigned long &last_
 }
 
 void loop() {
+  //calling arm methods.
   arm(posn_base, analog_pin_base, base_servo, last_update_base);
   arm(posn_shoulder, analog_pin_shoulder, shoulder_servo, last_update_shoulder);
   arm(posn_elbow, analog_pin_elbow, elbow_servo, last_update_elbow);
