@@ -1,13 +1,13 @@
 #include <Servo.h>      
 
-//restricted motion of servo
+// Define the restricted motion range for the servo motors
 const int MIN = 20;      
 const int MAX = 160;     
 
-//intialised speed to zeroi
+// Initialize speed to zero (no movement at start)
 int speed = 0;
 
-//initialised initial position of arm.
+// Initial positions of the robotic arm's joints
 int posn_base = 90;
 int posn_shoulder = 90;
 int posn_elbow = 90;
@@ -15,15 +15,15 @@ int posn_wrist = 90;
 int posn_gripper_ud = 90;
 int posn_gripper = 90;
 
-//setting position of links on joystick.
-const int analog_pin_base = A0; // joystick1 x
-const int analog_pin_shoulder = A1; // joystick1 y
-const int analog_pin_elbow = A2;  // joystick2 x
-const int analog_pin_wrist = A3;   //joystick2 y
-const int analog_pin_gripper_ud = A4;  //joystick3 y
-const int analog_pin_gripper = A5;  //joystick3 x
+// Analog pins connected to joystick axes for controlling each link
+const int analog_pin_base = A0; // Joystick1 X-axis controls the base
+const int analog_pin_shoulder = A1; // Joystick1 Y-axis controls the shoulder
+const int analog_pin_elbow = A2;  // Joystick2 X-axis controls the elbow
+const int analog_pin_wrist = A3;   // Joystick2 Y-axis controls the wrist
+const int analog_pin_gripper_ud = A4;  // Joystick3 Y-axis controls the gripper's up/down motion
+const int analog_pin_gripper = A5;  // Joystick3 X-axis controls the gripper's opening/closing
 
-
+// Digital pins for controlling the servos
 const int digital_pin_base = 3;
 const int digital_pin_shoulder = 5;
 const int digital_pin_elbow = 6;
@@ -31,7 +31,7 @@ const int digital_pin_wrist = 9;
 const int digital_pin_gripper_ud = 10;
 const int digital_pin_gripper = 11;
 
-//Declaring links.
+// Declare Servo objects to control each joint/link of the robotic arm
 Servo base_servo;
 Servo shoulder_servo;
 Servo elbow_servo;
@@ -39,7 +39,7 @@ Servo wrist_servo;
 Servo gripper_ud_servo;
 Servo gripper_servo;
 
-//storing last updated time of links movement.
+// Store the last updated time for each link's movement
 unsigned long last_update_base = 0;
 unsigned long last_update_shoulder = 0;
 unsigned long last_update_elbow = 0;
@@ -47,14 +47,14 @@ unsigned long last_update_wrist = 0;
 unsigned long last_update_gripper_ud = 0;
 unsigned long last_update_gripper = 0;
 
-//setting interval for calling objects(functions).
-const unsigned long update_interval = 20; // Update interval in milliseconds
+// Set the time interval for updating the servo positions
+const unsigned long update_interval = 20; // Update every 20 milliseconds
 
 void setup() {
-  //beginning communication with serial monitor through serial port for debugging.
+  // Start serial communication for debugging
   Serial.begin(9600);
 
-  //declaring analog pins for joysticks.
+  // Initialize the analog pins for joystick input
   pinMode(analog_pin_base, INPUT);
   pinMode(analog_pin_shoulder, INPUT);
   pinMode(analog_pin_elbow, INPUT);
@@ -62,7 +62,7 @@ void setup() {
   pinMode(analog_pin_gripper_ud, INPUT);
   pinMode(analog_pin_gripper, INPUT);
 
-  //intialising servo objects.
+  // Attach each servo to its respective digital pin
   base_servo.attach(digital_pin_base);
   shoulder_servo.attach(digital_pin_shoulder);
   elbow_servo.attach(digital_pin_elbow);
@@ -70,7 +70,7 @@ void setup() {
   gripper_ud_servo.attach(digital_pin_gripper_ud);
   gripper_servo.attach(digital_pin_gripper);
 
-  // initialization
+  // Initialize all servos to their starting positions
   base_servo.write(posn_base);
   shoulder_servo.write(posn_shoulder);
   elbow_servo.write(posn_elbow);
@@ -80,29 +80,29 @@ void setup() {
 }
 
 void arm(int &posn, int analog_pin_link, Servo &link_servo, unsigned long &last_update) {
-  unsigned long current_time = millis();  // recording current time.
+  unsigned long current_time = millis();  // Get the current time
   
-  //reading joystick value only after a threshold time interval.
+  // Only update the position if the specified time interval has passed
   if (current_time - last_update >= update_interval) {    
-    int js_read = analogRead(analog_pin_link);
-    speed = map(js_read, 0, 1023, -3, 3);   //adjusting speed according joystick movement.
+    int js_read = analogRead(analog_pin_link);  // Read the joystick value
+    speed = map(js_read, 0, 1023, -3, 3);  // Map joystick value to a speed range (-3 to 3)
 
-    //setting a dead zone for joystick.
+    // Define a dead zone around the center of the joystick to avoid jittering
     if (js_read <= 450 || js_read >= 550) {  
-      posn += speed;
-      posn = constrain(posn, MIN, MAX);   //restricting extreme values of position.
-      link_servo.write(posn);
+      posn += speed;  // Update the position based on joystick input
+      posn = constrain(posn, MIN, MAX);  // Constrain the position within the allowed range (MIN to MAX)
+      link_servo.write(posn);  // Move the servo to the updated position
     }
-    last_update = current_time;
+    last_update = current_time;  // Update the last updated time for this link
   }
 }
 
 void loop() {
-  //calling arm methods.
+  // Call the arm function to control each servo/joint based on joystick input
   arm(posn_base, analog_pin_base, base_servo, last_update_base);
   arm(posn_shoulder, analog_pin_shoulder, shoulder_servo, last_update_shoulder);
   arm(posn_elbow, analog_pin_elbow, elbow_servo, last_update_elbow);
   arm(posn_wrist, analog_pin_wrist, wrist_servo, last_update_wrist);
   arm(posn_gripper_ud, analog_pin_gripper_ud, gripper_ud_servo, last_update_gripper_ud);
   arm(posn_gripper, analog_pin_gripper, gripper_servo, last_update_gripper);
-}   
+}
