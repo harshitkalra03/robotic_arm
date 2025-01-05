@@ -1,10 +1,13 @@
-#include <Servo.h>
+#include <Servo.h>      
 
-const int MIN = 20;
-const int MAX = 160;
+//restricted motion of servo
+const int MIN = 20;      
+const int MAX = 160;     
 
+//intialised speed to zeroi
 int speed = 0;
 
+//initialised initial position of arm.
 int posn_base = 90;
 int posn_shoulder = 90;
 int posn_elbow = 90;
@@ -12,12 +15,14 @@ int posn_wrist = 90;
 int posn_gripper_ud = 90;
 int posn_gripper = 90;
 
-const int analog_pin_base = A0; // js1 x
-const int analog_pin_shoulder = A1; // js1 y
-const int analog_pin_elbow = A2;
-const int analog_pin_wrist = A3;
-const int analog_pin_gripper_ud = A4;
-const int analog_pin_gripper = A5;
+//setting position of links on joystick.
+const int analog_pin_base = A0; // joystick1 x
+const int analog_pin_shoulder = A1; // joystick1 y
+const int analog_pin_elbow = A2;  // joystick2 x
+const int analog_pin_wrist = A3;   //joystick2 y
+const int analog_pin_gripper_ud = A4;  //joystick3 y
+const int analog_pin_gripper = A5;  //joystick3 x
+
 
 const int digital_pin_base = 3;
 const int digital_pin_shoulder = 5;
@@ -26,6 +31,7 @@ const int digital_pin_wrist = 9;
 const int digital_pin_gripper_ud = 10;
 const int digital_pin_gripper = 11;
 
+//Declaring links.
 Servo base_servo;
 Servo shoulder_servo;
 Servo elbow_servo;
@@ -33,6 +39,7 @@ Servo wrist_servo;
 Servo gripper_ud_servo;
 Servo gripper_servo;
 
+//storing last updated time of links movement.
 unsigned long last_update_base = 0;
 unsigned long last_update_shoulder = 0;
 unsigned long last_update_elbow = 0;
@@ -40,11 +47,14 @@ unsigned long last_update_wrist = 0;
 unsigned long last_update_gripper_ud = 0;
 unsigned long last_update_gripper = 0;
 
+//setting interval for calling objects(functions).
 const unsigned long update_interval = 20; // Update interval in milliseconds
 
 void setup() {
+  //beginning communication with serial monitor through serial port for debugging.
   Serial.begin(9600);
 
+  
   pinMode(analog_pin_base, INPUT);
   pinMode(analog_pin_shoulder, INPUT);
   pinMode(analog_pin_elbow, INPUT);
