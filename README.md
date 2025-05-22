@@ -29,6 +29,24 @@ An Arduino UNO R3 serves as the brain of the system, programmed to control the s
 7. Jumper Wires
 
 ## Libraries Used
++ Servo.h
++ Arduino.h
+  
 ## Circuit Diagram
-## Industrial Applications
+
+## Applications - Robotic Arm
+1. <ins>***Industrial Automation***</ins>
+   1. Assembly lines in automotive and electronics industries
+   2. Welding, painting, and packaging
+2. <ins>***Medical Field***</ins>
+   1. Surgical robots for minimally invasive procedures
+   2. Rehabilitation and physical therapy support
+   3. Pharmaceutical handling and lab automation
+3. <ins>***Warehouse & Logistics***</ins>
+   1. Sorting, picking, and placing items
+   2. Loading/unloading packages
+   3. Integration with automated storage systems
+
 ## Contributors
+1. @shlok165
+2. Kian Sparrow
