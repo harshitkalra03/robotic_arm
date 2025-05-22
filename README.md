@@ -1,15 +1,15 @@
-# robotic_arm
-<br>
-6 axis robotic arm.
-<br><br>
-Components:-<br>
-1. 3D printed parts for base, shoulder, elbor, wrist, gripper joints.
-<br>
-2. 6 servos(3--> SG90 ; 3--> MG995)
-<br>
-3. 3 Joysticks
-<br>
-4. Arduino UNO R3 (Microcontroller)<br>
-5. Lipo Battery<br>
-6. Buck Module<br>
-7. Jumper Wires
+# Robotic Arm - 6 DoF
+## Project Description
+
+## Components Used
+### Hardware
+1. 3D Printed Parts for Links
+2. Pointed Edge Screws
+3. M4 Nut & Bolts
+### Electronics
+1. SG90 Servo Motors
+2. MG995 Servo Motors
+3. Arduino UNO R3
+4. Lipo Battery - 2200mAh
+5. Buck Module
+6. Jumper Wires
