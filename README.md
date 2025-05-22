@@ -51,7 +51,7 @@ At its core, the system uses an **Arduino UNO R3** to process control signals vi
 ## 👥 Contributors
 + [**Robotics Club**](https://www.linkedin.com/company/robotics-club-iitrpr/), IIT Ropar<br>
   **Role:** Mentorship, Logistics Help, Guidance
-+ [**Shlok Narayan Vaidya**](https://www.linkedin.com/in/shlok-vaidya-138803326/), B.Tech Artificial Intelligence & Data Science, IIT Ropar<br>
++ [**Shlok Narayan Vaidya**](https://www.linkedin.com/in/shlok-vaidya-138803326/), B.Tech Artificial Intelligence & Data Engineering, IIT Ropar<br>
   **Role:** Embedded Programming, Control System Design
 + [**Kian Sparrow**](https://www.linkedin.com/in/kian-sparrow-4a6361320/), B.Tech Engineering Physics, IIT Ropar<br>
   **Role:** Fabrication, Control System Design, Embedded Programming
