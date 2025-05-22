@@ -30,7 +30,7 @@ At its core, the system uses an **Arduino UNO R3** to process control signals vi
 
 ## 📚 Libraries Used
 + [Servo.h](https://github.com/arduino-libraries/Servo)
-+ Arduino.h
++ Arduino.h (Core Library)
   
 ## ⚡ Circuit Diagram
 > (To be added as Schematic-Image)
@@ -49,12 +49,12 @@ At its core, the system uses an **Arduino UNO R3** to process control signals vi
    3. Integration with automated storage systems
 
 ## 👥 Contributors
-+ [**Robotics Club**](https://www.linkedin.com/company/robotics-club-iitrpr/), IIT Ropar
++ [**Robotics Club**](https://www.linkedin.com/company/robotics-club-iitrpr/), IIT Ropar<br>
   **Role:** Mentorship, Logistics Help, Guidance
-+ [**Shlok Narayan Vaidya**](https://www.linkedin.com/in/shlok-vaidya-138803326/), B.Tech Artificial Intelligence & Data Science, IIT Ropar
++ [**Shlok Narayan Vaidya**](https://www.linkedin.com/in/shlok-vaidya-138803326/), B.Tech Artificial Intelligence & Data Science, IIT Ropar<br>
   **Role:** Embedded Programming, Control System Design
-+ [**Kian Sparrow**](https://www.linkedin.com/in/kian-sparrow-4a6361320/), B.Tech Engineering Physics, IIT Ropar
++ [**Kian Sparrow**](https://www.linkedin.com/in/kian-sparrow-4a6361320/), B.Tech Engineering Physics, IIT Ropar<br>
   **Role:** Fabrication, Control System Design, Embedded Programming
-+ [**Harshit Kalra**](https://www.linkedin.com/in/harshit-kalra-84309a317/), B.Tech Electrical Engineering, IIT Ropar
++ [**Harshit Kalra**](https://www.linkedin.com/in/harshit-kalra-84309a317/), B.Tech Electrical Engineering, IIT Ropar<br>
   **Role:** Electronics, Embedded Programming, Fabrication
   
