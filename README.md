@@ -57,4 +57,6 @@ At its core, the system uses an **Arduino UNO R3** to process control signals vi
   **Role:** Fabrication, Control System Design, Embedded Programming
 + [**Harshit Kalra**](https://www.linkedin.com/in/harshit-kalra-84309a317/), B.Tech Electrical Engineering, IIT Ropar<br>
   **Role:** Electronics, Embedded Programming, Fabrication
++ [**Amey Kemkar**](https://www.linkedin.com/in/amey-kemkar-2ab222313/), B.Tech Mechanical Engineering, IIT Ropar<br>
+  **Role:** CAD Designing
   
