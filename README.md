@@ -12,7 +12,8 @@ The six key segments of the robotic arm include:
 
 This prototype model is manually controlled using **three PS2 joystick modules**, each responsible for two degrees of freedom, embedded in a **handcrafted control unit**.<br>
 The arm employs two types of servo motors—**SG90** and **MG995** (three each). While not high-torque, these motors are well-suited for lightweight manipulation tasks, making the setup ideal for testing, learning, and proof-of-concept applications.<br>
-At its core, the system uses an **Arduino UNO R3** to process control signals via a **polling algorithm**. The algorithm maps joystick input linearly to joint movement and incorporates a **deadzone** to filter out accidental or sudden joystick releases, ensuring smoother and more stable operation.
+At its core, the system uses an **Arduino UNO R3** to process control signals via a **polling algorithm**. The algorithm maps joystick input linearly to joint movement and incorporates a **deadzone** to filter out accidental or sudden joystick releases, ensuring smoother and more stable operation.<br>
+A buck converter (LM2596) steps down the 11.1V input from the LiPo battery to 5V, matching the servo motor voltage requirements and ensuring safe operation.
 
 ## 🔩 Components Used
 ### 🛠 Hardware
@@ -24,7 +25,7 @@ At its core, the system uses an **Arduino UNO R3** to process control signals vi
 2. [MG995 Servo Motors - 180 Degree Rotation](https://robu.in/product/towerpro-mg995-metal-gear-servo-motor/?msclkid=6700b32559a511bfc62cdb0b8deb839b&utm_source=bing&utm_medium=cpc&utm_campaign=PMax-Motors,%20Drivers,%20Pumps%20%26%20Actuators%20-%20Jan%202025&utm_term=2328559470122370&utm_content=RC%20Servo%20Motors)
 3. [Arduino UNO R3](https://robu.in/product/arduino-uno-r3/)
 4. [Lipo Battery - 2200mAh](https://robu.in/product/orange-2200mah-3s-30c60c-lithium-polymer-battery-pack-lipo/)
-5. [Buck Module - 5V Step Down](https://robu.in/product/lm2596-hv-dc-dc-buck-converter-4-5-50v-to-3-35v/)
+5. [Buck Module LM2596 - 5V Step Down](https://robu.in/product/lm2596-hv-dc-dc-buck-converter-4-5-50v-to-3-35v/)
 6. [Joystick Module](https://robu.in/product/joystick-module-ps2-breakout-sensor/)
 7. Jumper Wires
 
